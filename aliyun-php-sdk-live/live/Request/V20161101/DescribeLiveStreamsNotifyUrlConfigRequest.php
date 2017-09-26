@@ -17,7 +17,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-namespace live\Request\V20161101;
+namespace Live\Request\V20161101;
 
 class DescribeLiveStreamsNotifyUrlConfigRequest extends \RpcAcsRequest
 {

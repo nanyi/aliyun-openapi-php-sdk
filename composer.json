@@ -30,7 +30,7 @@
             "Iot\\": "aliyun-php-sdk-iot/",
             "Jaq\\": "aliyun-php-sdk-jaq/",
             "Kms\\": "aliyun-php-sdk-kms/",
-            "live\\": "aliyun-php-sdk-live/",
+            "Live\\": "aliyun-php-sdk-live/",
             "Market\\": "aliyun-php-sdk-market/",
             "Mts\\": "aliyun-php-sdk-mts/",
             "Ons\\": "aliyun-php-sdk-ons/",
