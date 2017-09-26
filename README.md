@@ -8,10 +8,17 @@
 
 - to run unit tests, you will have to configure aliyun-sdk.properties files in your user directory, and make sure your project has corresponding service enabled, eg. openmr.
 
+## Composer Support
+
+```shell
+composer require 51idc/aliyun-openapi-php-sdk dev-master
+```
+
 ## Example
 
 ```php
-include_once '../aliyun-php-sdk-core/Config.php';
+include_once 'vendor/autoload.php';
+
 use Ecs\Request\V20140526 as Ecs;
 
 $iClientProfile = DefaultProfile::getProfile("cn-hangzhou", "<your accessKey>", "<your accessSecret>");
