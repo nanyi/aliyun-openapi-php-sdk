@@ -13,6 +13,10 @@
             "aliyun-php-sdk-core/Config.php",
             "aliyun-php-sdk-core/Autoloader/"
         ],
+        "files":[
+            "aliyun-php-sdk-core/Constants.php",
+            "aliyun-php-sdk-core/Regions/EndpointConfig.php"
+        ],
         "psr-4": {
             "Ecs\\": "aliyun-php-sdk-ecs/",
             "BatchCompute\\": "aliyun-php-sdk-batchcompute/",
