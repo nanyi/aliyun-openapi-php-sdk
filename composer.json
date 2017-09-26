@@ -40,7 +40,7 @@
             "Sms\\": "aliyun-php-sdk-sms/",
             "Sts\\": "aliyun-php-sdk-sts/",
             "Ubsms\\": "aliyun-php-sdk-ubsms/",
-            "vod\\": "aliyun-php-sdk-vod/",
+            "Vod\\": "aliyun-php-sdk-vod/",
             "Vpc\\": "aliyun-php-sdk-vpc/"
         }
     }
