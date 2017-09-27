@@ -54,8 +54,7 @@ class LocationService
 	{
 		$key = $regionId.'#'.$product;
 		@$domain = self::$cache[$key];
-		if ($domain == null || $this->
-		    ($key) == true)
+		if ($domain == null || $this->checkCacheIsExpire($key) == true)
 		{
 			$domain = $this->findProductDomainFromLocationService($regionId, $serviceCode, $endPointType);
             self::$cache[$key] = $domain;
