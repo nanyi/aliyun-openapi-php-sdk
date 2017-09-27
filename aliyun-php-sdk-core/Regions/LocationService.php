@@ -54,7 +54,8 @@ class LocationService
 	{
 		$key = $regionId.'#'.$product;
 		@$domain = self::$cache[$key];
-		if ($domain == null || $this->checkCacheIsExpire($key) == true)
+		if ($domain == null || $this->
+		    ($key) == true)
 		{
 			$domain = $this->findProductDomainFromLocationService($regionId, $serviceCode, $endPointType);
             self::$cache[$key] = $domain;
@@ -78,7 +79,7 @@ class LocationService
 
 	private function checkCacheIsExpire($key)
     {
-        $lastClearTime = self::$lastClearTimePerProduct[$key];
+        @$lastClearTime = self::$lastClearTimePerProduct[$key];
         if ($lastClearTime == null)
         {
             $lastClearTime = time();
