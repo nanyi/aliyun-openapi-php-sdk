@@ -41,7 +41,8 @@
             "Sts\\": "aliyun-php-sdk-sts/",
             "Ubsms\\": "aliyun-php-sdk-ubsms/",
             "Vod\\": "aliyun-php-sdk-vod/",
-            "Vpc\\": "aliyun-php-sdk-vpc/"
+            "Vpc\\": "aliyun-php-sdk-vpc/",
+            "Ram\\": "aliyun-php-sdk-ram/"
         }
     }
 }
