@@ -27,18 +27,34 @@ class GetPlayInfoRequest extends \RpcAcsRequest
 		$this->setMethod("POST");
 	}
 
+	private  $rand;
+
 	private  $resourceOwnerId;
 
 	private  $formats;
 
 	private  $resourceOwnerAccount;
 
+	private  $channel;
+
 	private  $videoId;
+
+	private  $playerVersion;
 
 	private  $ownerId;
 
 	private  $authTimeout;
 
+	private  $authInfo;
+
+	public function getRand() {
+		return $this->rand;
+	}
+
+	public function setRand($rand) {
+		$this->rand = $rand;
+		$this->queryParameters["Rand"]=$rand;
+	}
 
 	public function getResourceOwnerId() {
 		return $this->resourceOwnerId;
@@ -67,6 +83,15 @@ class GetPlayInfoRequest extends \RpcAcsRequest
 		$this->queryParameters["ResourceOwnerAccount"]=$resourceOwnerAccount;
 	}
 
+	public function getChannel() {
+		return $this->channel;
+	}
+
+	public function setChannel($channel) {
+		$this->channel = $channel;
+		$this->queryParameters["Channel"]=$channel;
+	}
+
 	public function getVideoId() {
 		return $this->videoId;
 	}
@@ -74,6 +99,15 @@ class GetPlayInfoRequest extends \RpcAcsRequest
 	public function setVideoId($videoId) {
 		$this->videoId = $videoId;
 		$this->queryParameters["VideoId"]=$videoId;
+	}
+
+	public function getPlayerVersion() {
+		return $this->playerVersion;
+	}
+
+	public function setPlayerVersion($playerVersion) {
+		$this->playerVersion = $playerVersion;
+		$this->queryParameters["PlayerVersion"]=$playerVersion;
 	}
 
 	public function getOwnerId() {
@@ -92,6 +126,15 @@ class GetPlayInfoRequest extends \RpcAcsRequest
 	public function setAuthTimeout($authTimeout) {
 		$this->authTimeout = $authTimeout;
 		$this->queryParameters["AuthTimeout"]=$authTimeout;
+	}
+
+	public function getAuthInfo() {
+		return $this->authInfo;
+	}
+
+	public function setAuthInfo($authInfo) {
+		$this->authInfo = $authInfo;
+		$this->queryParameters["AuthInfo"]=$authInfo;
 	}
 	
 }
