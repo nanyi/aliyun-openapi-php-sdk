@@ -42,7 +42,10 @@
             "Ubsms\\": "aliyun-php-sdk-ubsms/",
             "Vod\\": "aliyun-php-sdk-vod/",
             "Vpc\\": "aliyun-php-sdk-vpc/",
-            "Ram\\": "aliyun-php-sdk-ram/"
+            "Ram\\": "aliyun-php-sdk-ram/",
+            "R_kvstore\\": "aliyun-php-sdk-r-kvstore/",
+            "Chatbot\\": "aliyun-php-sdk-chatbot/",
+            "Ess\\": "aliyun-php-sdk-ess/"
         }
     }
 }
