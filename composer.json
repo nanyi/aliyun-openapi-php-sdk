@@ -45,7 +45,8 @@
             "Ram\\": "aliyun-php-sdk-ram/",
             "R_kvstore\\": "aliyun-php-sdk-r-kvstore/",
             "Chatbot\\": "aliyun-php-sdk-chatbot/",
-            "Ess\\": "aliyun-php-sdk-ess/"
+            "Ess\\": "aliyun-php-sdk-ess/",
+            "CloudPhoto\\": "aliyun-php-sdk-cloudphoto/"
         }
     }
 }
