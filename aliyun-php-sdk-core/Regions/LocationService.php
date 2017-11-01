@@ -29,27 +29,27 @@ class DescribeEndpointRequest extends RpcAcsRequest
 {
 	function __construct($id, $serviceCode, $endPointType) {
 		parent::__construct(LOCATION_SERVICE_PRODUCT_NAME, LOCATION_SERVICE_VERSION, LOCATION_SERVICE_DESCRIBE_ENDPOINT_ACTION);
-		
+
 		$this->queryParameters["Id"] = $id;
 		$this->queryParameters["ServiceCode"] = $serviceCode;
 		$this->queryParameters["Type"] = $endPointType;
 		$this->setRegionId(LOCATION_SERVICE_REGION);
-		
+
 		$this->setAcceptFormat("JSON");
 	}
 }
 
 class LocationService
-{	
+{
 	private $clientProfile;
 	public static $cache = array();
 	public static $lastClearTimePerProduct = array();
 	public static $serviceDomain = LOCATION_SERVICE_DOMAIN;
-	
+
 	function __construct($clientProfile) {
 		$this->clientProfile = $clientProfile;
 	}
-	
+
 	public function findProductDomain($regionId, $serviceCode, $endPointType, $product)
 	{
 		$key = $regionId.'#'.$product;
@@ -97,24 +97,28 @@ class LocationService
 
         return false;
     }
-	
+
 	private function findProductDomainFromLocationService($regionId, $serviceCode, $endPointType)
 	{
 		$request = new DescribeEndpointRequest($regionId, $serviceCode, $endPointType);
-		
+
 		$signer = $this->clientProfile->getSigner();
 		$credential = $this->clientProfile->getCredential();
-		
+
 		$requestUrl = $request->composeUrl($signer, $credential, self::$serviceDomain);
-		
+
 		$httpResponse = HttpHelper::curl($requestUrl, $request->getMethod(), null, $request->getHeaders());
-		
+
 		if (!$httpResponse->isSuccess())
 		{
 			return null;
 		}
 
-		$respObj = json_decode($httpResponse->getBody());
-		return $respObj->Endpoints->Endpoint[0]->Endpoint;
+        $respObj = json_decode($httpResponse->getBody());
+        if ($respObj->Endpoints->Endpoint) {
+            return $respObj->Endpoints->Endpoint[0]->Endpoint;
+        }
+
+        throw new ServerException("None endpoints with RegionId:{$regionId} ServiceCode:{$serviceCode} EndPointType:{$endPointType}", -1, $httpResponse->getStatus(), $respObj->RequestId);
 	}
 }
