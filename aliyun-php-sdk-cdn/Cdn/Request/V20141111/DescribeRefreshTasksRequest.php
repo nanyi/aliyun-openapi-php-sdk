@@ -27,11 +27,9 @@ class DescribeRefreshTasksRequest extends \RpcAcsRequest
 		$this->setMethod("POST");
 	}
 
-	private  $securityToken;
-
 	private  $objectPath;
 
-	private  $pageSize;
+	private  $domainName;
 
 	private  $endTime;
 
@@ -39,18 +37,19 @@ class DescribeRefreshTasksRequest extends \RpcAcsRequest
 
 	private  $ownerId;
 
-	private  $taskId;
-
 	private  $pageNumber;
 
-	public function getSecurityToken() {
-		return $this->securityToken;
-	}
+	private  $resourceGroupId;
 
-	public function setSecurityToken($securityToken) {
-		$this->securityToken = $securityToken;
-		$this->queryParameters["SecurityToken"]=$securityToken;
-	}
+	private  $securityToken;
+
+	private  $pageSize;
+
+	private  $objectType;
+
+	private  $taskId;
+
+	private  $status;
 
 	public function getObjectPath() {
 		return $this->objectPath;
@@ -61,13 +60,13 @@ class DescribeRefreshTasksRequest extends \RpcAcsRequest
 		$this->queryParameters["ObjectPath"]=$objectPath;
 	}
 
-	public function getPageSize() {
-		return $this->pageSize;
+	public function getDomainName() {
+		return $this->domainName;
 	}
 
-	public function setPageSize($pageSize) {
-		$this->pageSize = $pageSize;
-		$this->queryParameters["PageSize"]=$pageSize;
+	public function setDomainName($domainName) {
+		$this->domainName = $domainName;
+		$this->queryParameters["DomainName"]=$domainName;
 	}
 
 	public function getEndTime() {
@@ -97,6 +96,51 @@ class DescribeRefreshTasksRequest extends \RpcAcsRequest
 		$this->queryParameters["OwnerId"]=$ownerId;
 	}
 
+	public function getPageNumber() {
+		return $this->pageNumber;
+	}
+
+	public function setPageNumber($pageNumber) {
+		$this->pageNumber = $pageNumber;
+		$this->queryParameters["PageNumber"]=$pageNumber;
+	}
+
+	public function getResourceGroupId() {
+		return $this->resourceGroupId;
+	}
+
+	public function setResourceGroupId($resourceGroupId) {
+		$this->resourceGroupId = $resourceGroupId;
+		$this->queryParameters["ResourceGroupId"]=$resourceGroupId;
+	}
+
+	public function getSecurityToken() {
+		return $this->securityToken;
+	}
+
+	public function setSecurityToken($securityToken) {
+		$this->securityToken = $securityToken;
+		$this->queryParameters["SecurityToken"]=$securityToken;
+	}
+
+	public function getPageSize() {
+		return $this->pageSize;
+	}
+
+	public function setPageSize($pageSize) {
+		$this->pageSize = $pageSize;
+		$this->queryParameters["PageSize"]=$pageSize;
+	}
+
+	public function getObjectType() {
+		return $this->objectType;
+	}
+
+	public function setObjectType($objectType) {
+		$this->objectType = $objectType;
+		$this->queryParameters["ObjectType"]=$objectType;
+	}
+
 	public function getTaskId() {
 		return $this->taskId;
 	}
@@ -106,13 +150,13 @@ class DescribeRefreshTasksRequest extends \RpcAcsRequest
 		$this->queryParameters["TaskId"]=$taskId;
 	}
 
-	public function getPageNumber() {
-		return $this->pageNumber;
+	public function getStatus() {
+		return $this->status;
 	}
 
-	public function setPageNumber($pageNumber) {
-		$this->pageNumber = $pageNumber;
-		$this->queryParameters["PageNumber"]=$pageNumber;
+	public function setStatus($status) {
+		$this->status = $status;
+		$this->queryParameters["Status"]=$status;
 	}
 	
 }
