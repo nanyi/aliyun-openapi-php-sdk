@@ -35,6 +35,8 @@ class GetVideoConfigRequest extends \RpcAcsRequest
 
 	private  $ownerId;
 
+	private  $authInfo;
+
 	public function getResourceOwnerId() {
 		return $this->resourceOwnerId;
 	}
@@ -69,6 +71,15 @@ class GetVideoConfigRequest extends \RpcAcsRequest
 	public function setOwnerId($ownerId) {
 		$this->ownerId = $ownerId;
 		$this->queryParameters["OwnerId"]=$ownerId;
+	}
+
+	public function getAuthInfo() {
+		return $this->authInfo;
+	}
+
+	public function setAuthInfo($authInfo) {
+		$this->authInfo = $authInfo;
+		$this->queryParameters["AuthInfo"]=$authInfo;
 	}
 	
 }

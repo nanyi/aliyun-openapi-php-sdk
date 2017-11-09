@@ -17,39 +17,25 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-namespace Ecs\Request\V20140526;
+namespace vod\Request\V20170321;
 
-class DescribeSpotPriceHistoryRequest extends \RpcAcsRequest
+class GetEditingProjectRequest extends \RpcAcsRequest
 {
 	function  __construct()
 	{
-		parent::__construct("Ecs", "2014-05-26", "DescribeSpotPriceHistory", "ecs", "openAPI");
+		parent::__construct("vod", "2017-03-21", "GetEditingProject", "vod", "openAPI");
 		$this->setMethod("POST");
 	}
 
 	private  $resourceOwnerId;
 
-	private  $ioOptimized;
-
-	private  $networkType;
-
-	private  $startTime;
-
-	private  $instanceType;
-
-	private  $offset;
-
 	private  $resourceOwnerAccount;
 
 	private  $ownerAccount;
 
-	private  $endTime;
-
-	private  $oSType;
-
 	private  $ownerId;
 
-	private  $zoneId;
+	private  $projectId;
 
 	public function getResourceOwnerId() {
 		return $this->resourceOwnerId;
@@ -58,51 +44,6 @@ class DescribeSpotPriceHistoryRequest extends \RpcAcsRequest
 	public function setResourceOwnerId($resourceOwnerId) {
 		$this->resourceOwnerId = $resourceOwnerId;
 		$this->queryParameters["ResourceOwnerId"]=$resourceOwnerId;
-	}
-
-	public function getIoOptimized() {
-		return $this->ioOptimized;
-	}
-
-	public function setIoOptimized($ioOptimized) {
-		$this->ioOptimized = $ioOptimized;
-		$this->queryParameters["IoOptimized"]=$ioOptimized;
-	}
-
-	public function getNetworkType() {
-		return $this->networkType;
-	}
-
-	public function setNetworkType($networkType) {
-		$this->networkType = $networkType;
-		$this->queryParameters["NetworkType"]=$networkType;
-	}
-
-	public function getStartTime() {
-		return $this->startTime;
-	}
-
-	public function setStartTime($startTime) {
-		$this->startTime = $startTime;
-		$this->queryParameters["StartTime"]=$startTime;
-	}
-
-	public function getInstanceType() {
-		return $this->instanceType;
-	}
-
-	public function setInstanceType($instanceType) {
-		$this->instanceType = $instanceType;
-		$this->queryParameters["InstanceType"]=$instanceType;
-	}
-
-	public function getOffset() {
-		return $this->offset;
-	}
-
-	public function setOffset($offset) {
-		$this->offset = $offset;
-		$this->queryParameters["Offset"]=$offset;
 	}
 
 	public function getResourceOwnerAccount() {
@@ -123,24 +64,6 @@ class DescribeSpotPriceHistoryRequest extends \RpcAcsRequest
 		$this->queryParameters["OwnerAccount"]=$ownerAccount;
 	}
 
-	public function getEndTime() {
-		return $this->endTime;
-	}
-
-	public function setEndTime($endTime) {
-		$this->endTime = $endTime;
-		$this->queryParameters["EndTime"]=$endTime;
-	}
-
-	public function getOSType() {
-		return $this->oSType;
-	}
-
-	public function setOSType($oSType) {
-		$this->oSType = $oSType;
-		$this->queryParameters["OSType"]=$oSType;
-	}
-
 	public function getOwnerId() {
 		return $this->ownerId;
 	}
@@ -150,13 +73,13 @@ class DescribeSpotPriceHistoryRequest extends \RpcAcsRequest
 		$this->queryParameters["OwnerId"]=$ownerId;
 	}
 
-	public function getZoneId() {
-		return $this->zoneId;
+	public function getProjectId() {
+		return $this->projectId;
 	}
 
-	public function setZoneId($zoneId) {
-		$this->zoneId = $zoneId;
-		$this->queryParameters["ZoneId"]=$zoneId;
+	public function setProjectId($projectId) {
+		$this->projectId = $projectId;
+		$this->queryParameters["ProjectId"]=$projectId;
 	}
 	
 }

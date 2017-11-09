@@ -27,9 +27,9 @@ class GetPlayInfoRequest extends \RpcAcsRequest
 		$this->setMethod("POST");
 	}
 
-	private  $rand;
-
 	private  $resourceOwnerId;
+
+	private  $streamType;
 
 	private  $formats;
 
@@ -43,18 +43,13 @@ class GetPlayInfoRequest extends \RpcAcsRequest
 
 	private  $ownerId;
 
+	private  $rand;
+
+	private  $reAuthInfo;
+
 	private  $authTimeout;
 
 	private  $authInfo;
-
-	public function getRand() {
-		return $this->rand;
-	}
-
-	public function setRand($rand) {
-		$this->rand = $rand;
-		$this->queryParameters["Rand"]=$rand;
-	}
 
 	public function getResourceOwnerId() {
 		return $this->resourceOwnerId;
@@ -63,6 +58,15 @@ class GetPlayInfoRequest extends \RpcAcsRequest
 	public function setResourceOwnerId($resourceOwnerId) {
 		$this->resourceOwnerId = $resourceOwnerId;
 		$this->queryParameters["ResourceOwnerId"]=$resourceOwnerId;
+	}
+
+	public function getStreamType() {
+		return $this->streamType;
+	}
+
+	public function setStreamType($streamType) {
+		$this->streamType = $streamType;
+		$this->queryParameters["StreamType"]=$streamType;
 	}
 
 	public function getFormats() {
@@ -117,6 +121,24 @@ class GetPlayInfoRequest extends \RpcAcsRequest
 	public function setOwnerId($ownerId) {
 		$this->ownerId = $ownerId;
 		$this->queryParameters["OwnerId"]=$ownerId;
+	}
+
+	public function getRand() {
+		return $this->rand;
+	}
+
+	public function setRand($rand) {
+		$this->rand = $rand;
+		$this->queryParameters["Rand"]=$rand;
+	}
+
+	public function getReAuthInfo() {
+		return $this->reAuthInfo;
+	}
+
+	public function setReAuthInfo($reAuthInfo) {
+		$this->reAuthInfo = $reAuthInfo;
+		$this->queryParameters["ReAuthInfo"]=$reAuthInfo;
 	}
 
 	public function getAuthTimeout() {
