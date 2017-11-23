@@ -59,7 +59,7 @@ class DefaultAcsClient extends Client implements IAcsClient
         $maxRetryNumber = 3
     ) {
         $httpResponse = $this->doActionImpl($request, $iSigner, $credential, $autoRetry, $maxRetryNumber);
-        $respObject = $this->parseAcsResponse($httpResponse);
+        $respObject = self::parseAcsResponse($httpResponse);
         if (false == $this->isSuccess($httpResponse)) {
             $this->buildApiException($respObject, $httpResponse->getStatusCode());
         }
@@ -229,7 +229,7 @@ class DefaultAcsClient extends Client implements IAcsClient
     ) {
         $pool = new \GuzzleHttp\Pool($this, $requests, [
             'fulfilled'   => function (ResponseInterface $response, $index) use ($fulfilled, $requests, $args) {
-                $respObject = $this->parseAcsResponse($response);
+                $respObject = self::parseAcsResponse($response);
                 if (false == $this->isSuccess($response)) {
                     $this->buildApiException($respObject, $response->getStatusCode());
                 }
@@ -269,7 +269,7 @@ class DefaultAcsClient extends Client implements IAcsClient
      * @param ResponseInterface $response
      * @return mixed|SimpleXMLElement|string
      */
-    private function parseAcsResponse(ResponseInterface $response)
+    public static function parseAcsResponse(ResponseInterface $response)
     {
         $contentType = $response->getHeaderLine('Content-Type');
         $body = $response->getBody()->getContents();
