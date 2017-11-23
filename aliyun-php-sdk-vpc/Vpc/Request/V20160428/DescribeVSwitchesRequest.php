@@ -27,34 +27,27 @@ class DescribeVSwitchesRequest extends \RpcAcsRequest
 		$this->setMethod("POST");
 	}
 
-	private  $vSwitchId;
-
 	private  $resourceOwnerId;
 
 	private  $resourceOwnerAccount;
 
+	private  $ownerAccount;
+
+	private  $ownerId;
+
+	private  $pageNumber;
+
+	private  $vSwitchId;
+
 	private  $vpcId;
 
-	private  $ownerAccount;
+	private  $name;
 
 	private  $pageSize;
 
 	private  $zoneId;
 
 	private  $isDefault;
-
-	private  $ownerId;
-
-	private  $pageNumber;
-
-	public function getVSwitchId() {
-		return $this->vSwitchId;
-	}
-
-	public function setVSwitchId($vSwitchId) {
-		$this->vSwitchId = $vSwitchId;
-		$this->queryParameters["VSwitchId"]=$vSwitchId;
-	}
 
 	public function getResourceOwnerId() {
 		return $this->resourceOwnerId;
@@ -74,6 +67,42 @@ class DescribeVSwitchesRequest extends \RpcAcsRequest
 		$this->queryParameters["ResourceOwnerAccount"]=$resourceOwnerAccount;
 	}
 
+	public function getOwnerAccount() {
+		return $this->ownerAccount;
+	}
+
+	public function setOwnerAccount($ownerAccount) {
+		$this->ownerAccount = $ownerAccount;
+		$this->queryParameters["OwnerAccount"]=$ownerAccount;
+	}
+
+	public function getOwnerId() {
+		return $this->ownerId;
+	}
+
+	public function setOwnerId($ownerId) {
+		$this->ownerId = $ownerId;
+		$this->queryParameters["OwnerId"]=$ownerId;
+	}
+
+	public function getPageNumber() {
+		return $this->pageNumber;
+	}
+
+	public function setPageNumber($pageNumber) {
+		$this->pageNumber = $pageNumber;
+		$this->queryParameters["PageNumber"]=$pageNumber;
+	}
+
+	public function getVSwitchId() {
+		return $this->vSwitchId;
+	}
+
+	public function setVSwitchId($vSwitchId) {
+		$this->vSwitchId = $vSwitchId;
+		$this->queryParameters["VSwitchId"]=$vSwitchId;
+	}
+
 	public function getVpcId() {
 		return $this->vpcId;
 	}
@@ -83,13 +112,13 @@ class DescribeVSwitchesRequest extends \RpcAcsRequest
 		$this->queryParameters["VpcId"]=$vpcId;
 	}
 
-	public function getOwnerAccount() {
-		return $this->ownerAccount;
+	public function getName() {
+		return $this->name;
 	}
 
-	public function setOwnerAccount($ownerAccount) {
-		$this->ownerAccount = $ownerAccount;
-		$this->queryParameters["OwnerAccount"]=$ownerAccount;
+	public function setName($name) {
+		$this->name = $name;
+		$this->queryParameters["Name"]=$name;
 	}
 
 	public function getPageSize() {
@@ -117,24 +146,6 @@ class DescribeVSwitchesRequest extends \RpcAcsRequest
 	public function setIsDefault($isDefault) {
 		$this->isDefault = $isDefault;
 		$this->queryParameters["IsDefault"]=$isDefault;
-	}
-
-	public function getOwnerId() {
-		return $this->ownerId;
-	}
-
-	public function setOwnerId($ownerId) {
-		$this->ownerId = $ownerId;
-		$this->queryParameters["OwnerId"]=$ownerId;
-	}
-
-	public function getPageNumber() {
-		return $this->pageNumber;
-	}
-
-	public function setPageNumber($pageNumber) {
-		$this->pageNumber = $pageNumber;
-		$this->queryParameters["PageNumber"]=$pageNumber;
 	}
 	
 }

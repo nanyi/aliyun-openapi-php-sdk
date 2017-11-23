@@ -17,29 +17,29 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-namespace Vpc\Request\V20160428;
+namespace Dds\Request\V20151201;
 
-class DescribeBandwidthPackageMonitorDataRequest extends \RpcAcsRequest
+class ResetAccountPasswordRequest extends \RpcAcsRequest
 {
 	function  __construct()
 	{
-		parent::__construct("Vpc", "2016-04-28", "DescribeBandwidthPackageMonitorData", "vpc", "openAPI");
+		parent::__construct("Dds", "2015-12-01", "ResetAccountPassword", "dds", "openAPI");
 		$this->setMethod("POST");
 	}
 
 	private  $resourceOwnerId;
 
-	private  $period;
+	private  $accountPassword;
 
-	private  $bandwidthPackageId;
+	private  $accountName;
+
+	private  $securityToken;
 
 	private  $resourceOwnerAccount;
 
 	private  $ownerAccount;
 
-	private  $endTime;
-
-	private  $startTime;
+	private  $dBInstanceId;
 
 	private  $ownerId;
 
@@ -52,22 +52,31 @@ class DescribeBandwidthPackageMonitorDataRequest extends \RpcAcsRequest
 		$this->queryParameters["ResourceOwnerId"]=$resourceOwnerId;
 	}
 
-	public function getPeriod() {
-		return $this->period;
+	public function getAccountPassword() {
+		return $this->accountPassword;
 	}
 
-	public function setPeriod($period) {
-		$this->period = $period;
-		$this->queryParameters["Period"]=$period;
+	public function setAccountPassword($accountPassword) {
+		$this->accountPassword = $accountPassword;
+		$this->queryParameters["AccountPassword"]=$accountPassword;
 	}
 
-	public function getBandwidthPackageId() {
-		return $this->bandwidthPackageId;
+	public function getAccountName() {
+		return $this->accountName;
 	}
 
-	public function setBandwidthPackageId($bandwidthPackageId) {
-		$this->bandwidthPackageId = $bandwidthPackageId;
-		$this->queryParameters["BandwidthPackageId"]=$bandwidthPackageId;
+	public function setAccountName($accountName) {
+		$this->accountName = $accountName;
+		$this->queryParameters["AccountName"]=$accountName;
+	}
+
+	public function getSecurityToken() {
+		return $this->securityToken;
+	}
+
+	public function setSecurityToken($securityToken) {
+		$this->securityToken = $securityToken;
+		$this->queryParameters["SecurityToken"]=$securityToken;
 	}
 
 	public function getResourceOwnerAccount() {
@@ -88,22 +97,13 @@ class DescribeBandwidthPackageMonitorDataRequest extends \RpcAcsRequest
 		$this->queryParameters["OwnerAccount"]=$ownerAccount;
 	}
 
-	public function getEndTime() {
-		return $this->endTime;
+	public function getDBInstanceId() {
+		return $this->dBInstanceId;
 	}
 
-	public function setEndTime($endTime) {
-		$this->endTime = $endTime;
-		$this->queryParameters["EndTime"]=$endTime;
-	}
-
-	public function getStartTime() {
-		return $this->startTime;
-	}
-
-	public function setStartTime($startTime) {
-		$this->startTime = $startTime;
-		$this->queryParameters["StartTime"]=$startTime;
+	public function setDBInstanceId($dBInstanceId) {
+		$this->dBInstanceId = $dBInstanceId;
+		$this->queryParameters["DBInstanceId"]=$dBInstanceId;
 	}
 
 	public function getOwnerId() {
