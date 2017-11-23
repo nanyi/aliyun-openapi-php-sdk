@@ -45,7 +45,8 @@
             "R_kvstore\\": "aliyun-php-sdk-r-kvstore/",
             "Chatbot\\": "aliyun-php-sdk-chatbot/",
             "Ess\\": "aliyun-php-sdk-ess/",
-            "CloudPhoto\\": "aliyun-php-sdk-cloudphoto/"
+            "CloudPhoto\\": "aliyun-php-sdk-cloudphoto/",
+            "Dds\\": "aliyun-php-sdk-dds/"
         }
     }
 }
