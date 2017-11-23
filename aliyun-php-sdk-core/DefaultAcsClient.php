@@ -60,7 +60,7 @@ class DefaultAcsClient extends Client implements IAcsClient
     ) {
         $httpResponse = $this->doActionImpl($request, $iSigner, $credential, $autoRetry, $maxRetryNumber);
         $respObject = self::parseAcsResponse($httpResponse);
-        if (false == $this->isSuccess($httpResponse)) {
+        if (false == self::isSuccess($httpResponse)) {
             $this->buildApiException($respObject, $httpResponse->getStatusCode());
         }
         return $respObject;
@@ -70,7 +70,7 @@ class DefaultAcsClient extends Client implements IAcsClient
      * @param ResponseInterface $response
      * @return bool
      */
-    public function isSuccess(ResponseInterface $response)
+    public static function isSuccess(ResponseInterface $response)
     {
         if (200 <= $response->getStatusCode() && 300 > $response->getStatusCode()) {
             return true;
@@ -230,7 +230,7 @@ class DefaultAcsClient extends Client implements IAcsClient
         $pool = new \GuzzleHttp\Pool($this, $requests, [
             'fulfilled'   => function (ResponseInterface $response, $index) use ($fulfilled, $requests, $args) {
                 $respObject = self::parseAcsResponse($response);
-                if (false == $this->isSuccess($response)) {
+                if (false == self::isSuccess($response)) {
                     $this->buildApiException($respObject, $response->getStatusCode());
                 }
 
