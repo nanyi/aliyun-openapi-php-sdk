@@ -198,27 +198,31 @@ class DefaultAcsClient extends Client implements IAcsClient
     }
 
     /**
-     * 同时发生多个请求
+     * 同时发送多个请求
      *
      * @param array $requests
      * @param callable|null $fulfilled
      * @param callable|null $rejected
-     * @param array $config
+     * @param int $concurrency
+     * @param array $args
      * @return mixed
      */
     public function sendMultiRequests(
         array $requests,
         callable $fulfilled = null,
         callable $rejected = null,
-        $concurrency = 1
+        $concurrency = 1,
+        array $args = []
     ) {
         $pool = new \GuzzleHttp\Pool($this, $requests, [
-            'fulfilled'   => function (ResponseInterface $response, $index) use ($fulfilled, $requests) {
+            'fulfilled'   => function (ResponseInterface $response, $index) use ($fulfilled, $requests, $args) {
                 $respObject = $this->parseAcsResponse($response);
                 if (false == $this->isSuccess($response)) {
                     $this->buildApiException($respObject, $response->getStatusCode());
                 }
-                $fulfilled && $fulfilled($respObject, $response, $index);
+
+                array_unshift($args, $respObject);
+                $fulfilled && call_user_func_array($fulfilled, $args);
             },
             'rejected'    => $rejected,
             'concurrency' => $concurrency,
