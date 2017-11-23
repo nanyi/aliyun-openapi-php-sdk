@@ -224,7 +224,11 @@ class DefaultAcsClient extends Client implements IAcsClient
                 array_unshift($args, $respObject);
                 $fulfilled && call_user_func_array($fulfilled, $args);
             },
-            'rejected'    => $rejected,
+            'rejected'    => function ($reason, $index) use ($rejected, $args) {
+
+                array_unshift($args, $reason);
+                $rejected && call_user_func_array($rejected, $args);
+            },
             'concurrency' => $concurrency,
         ]);
 
