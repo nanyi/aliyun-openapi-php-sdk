@@ -14,7 +14,6 @@
             "aliyun-php-sdk-core/Autoloader/"
         ],
         "files":[
-            "aliyun-php-sdk-core/Constants.php",
             "aliyun-php-sdk-core/Regions/EndpointConfig.php"
         ],
         "psr-4": {

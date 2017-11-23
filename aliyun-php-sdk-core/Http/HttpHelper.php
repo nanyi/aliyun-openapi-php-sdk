@@ -21,22 +21,26 @@ class HttpHelper
 {
     public static $connectTimeout = 30;//30 second
     public static $readTimeout = 80;//80 second
-    
+
+    public static $ENABLE_HTTP_PROXY = false;
+    public static $HTTP_PROXY_IP = '127.0.0.1';
+    public static $HTTP_PROXY_PORT = 8888;
+
     public static function curl($url, $httpMethod = "GET", $postFields = null, $headers = null)
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $httpMethod);
-        if (ENABLE_HTTP_PROXY) {
+        if (self::$ENABLE_HTTP_PROXY) {
             curl_setopt($ch, CURLOPT_PROXYAUTH, CURLAUTH_BASIC);
-            curl_setopt($ch, CURLOPT_PROXY, HTTP_PROXY_IP);
-            curl_setopt($ch, CURLOPT_PROXYPORT, HTTP_PROXY_PORT);
+            curl_setopt($ch, CURLOPT_PROXY, self::$HTTP_PROXY_IP);
+            curl_setopt($ch, CURLOPT_PROXYPORT, self::$HTTP_PROXY_PORT);
             curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_HTTP);
         }
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_FAILONERROR, false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, is_array($postFields) ? self::getPostHttpBody($postFields) : $postFields);
-        
+
         if (self::$readTimeout) {
             curl_setopt($ch, CURLOPT_TIMEOUT, self::$readTimeout);
         }
