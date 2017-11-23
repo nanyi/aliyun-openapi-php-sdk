@@ -153,7 +153,20 @@ class DefaultAcsClient extends Client implements IAcsClient
         }
         $request = $this->prepareRequest($request);
 
-        $domain = EndpointProvider::findProductDomain($request->getRegionId(), $request->getProduct());
+        // Get the domain from the Location Service by speicified `ServiceCode` and `RegionId`.
+        $domain = null;
+        if (null != $request->getLocationServiceCode()) {
+            $domain = $this->locationService->findProductDomain(
+                $request->getRegionId(),
+                $request->getLocationServiceCode(),
+                $request->getLocationEndpointType(),
+                $request->getProduct()
+            );
+        }
+        if ($domain == null) {
+            $domain = EndpointProvider::findProductDomain($request->getRegionId(), $request->getProduct());
+        }
+
         if (null == $domain) {
             throw new ClientException("Can not find endpoint to access.", "SDK.InvalidRegionId");
         }
@@ -238,11 +251,18 @@ class DefaultAcsClient extends Client implements IAcsClient
     /**
      * @param $respObject
      * @param $httpStatus
-     * @throws ServerException
+     * @throws Exception
+     * @throws ServerException|\Exception
      */
     private function buildApiException($respObject, $httpStatus)
     {
-        throw new ServerException($respObject->Message, $respObject->Code, $httpStatus, $respObject->RequestId);
+        if (is_object($respObject) && isset($respObject->RequestId)) {
+            throw new ServerException($respObject->Message, $respObject->Code, $httpStatus, $respObject->RequestId);
+        } elseif (is_string($respObject)) {
+            throw new ServerException($respObject, -1, $httpStatus, 0);
+        } else {
+            throw new Exception("Invalid response object: " . gettype($respObject));
+        }
     }
 
     /**
