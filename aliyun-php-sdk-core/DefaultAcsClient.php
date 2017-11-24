@@ -224,7 +224,7 @@ class DefaultAcsClient extends Client implements IAcsClient
         array $requests,
         callable $fulfilled = null,
         callable $rejected = null,
-        $concurrency = 1,
+        $concurrency = 5,
         array $args = []
     ) {
         $pool = new \GuzzleHttp\Pool($this, $requests, [
@@ -233,14 +233,10 @@ class DefaultAcsClient extends Client implements IAcsClient
                 if (false == self::isSuccess($response)) {
                     $this->buildApiException($respObject, $response->getStatusCode());
                 }
-
-                array_unshift($args, $respObject);
-                $fulfilled && call_user_func_array($fulfilled, $args);
+                $fulfilled && call_user_func($fulfilled, $respObject, $response, $index, $args);
             },
             'rejected'    => function ($reason, $index) use ($rejected, $args) {
-
-                array_unshift($args, $reason);
-                $rejected && call_user_func_array($rejected, $args);
+                $rejected && call_user_func($rejected, $reason, $index, $args);
             },
             'concurrency' => $concurrency,
         ]);
