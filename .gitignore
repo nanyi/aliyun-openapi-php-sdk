@@ -3,3 +3,4 @@
 */.project
 aliyun-php-sdk-test/
 /vendor/
+.idea/

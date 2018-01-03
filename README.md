@@ -11,7 +11,7 @@
 ## Composer Support
 
 ```shell
-composer require anchnet/aliyun-openapi-php-sdk dev-master
+composer require nanyi/aliyun-openapi-php-sdk dev-master
 ```
 
 ## Example
