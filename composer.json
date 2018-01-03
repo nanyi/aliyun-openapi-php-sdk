@@ -1,13 +1,13 @@
 {
-    "name": "anchnet/aliyun-openapi-php-sdk",
+    "name": "nanyi/aliyun-openapi-php-sdk",
     "description": "Alibaba Cloud SDK for PHP",
     "license": "Apache License 2.0",
     "authors": [{
-        "name": "wudi",
-        "email": "wudi@anchent.com"
+        "name": "nanyi",
+        "email": "nanyi.com"
     }],
     "require": {
-        "guzzlehttp/guzzle": "^6.3"
+        "guzzlehttp/guzzle": "~6.2.3"
     },
     "autoload": {
         "classmap": ["aliyun-php-sdk-core/"],
